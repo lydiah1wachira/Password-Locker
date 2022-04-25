@@ -83,11 +83,11 @@ class Credentials:
     random_password = string.ascii_letters + string.digits + "!@#$%^&*"
     random.shuffle(random_password)
 
-    password = []
-    for i in range():
-      password.append(random.choice(random_password))
-    random.shuffle(password)
-    return "".join(password)
+    new_password = []
+    for i in range(passLength):
+      new_password.append(random.choice(random_password))
+    random.shuffle(new_password)
+    return "".join(new_password)
 
 
 

@@ -42,4 +42,27 @@ def del_credentials(credentials):
   '''
   credentials.delete_credentials()
 
-def 
+def display_accounts():
+  '''
+  Function that returns all saved credentials
+  '''
+  return Credentials.display_credentials()
+
+def find_credentials(account):
+  '''
+  Function that finds an account's credentials from the account name
+  '''
+  return Credentials.find_credentials_by_account_name(account)
+
+def check_credentials(account):
+  '''
+  Function to check if credentials exist for a specific account.
+  '''
+  return Credentials.credentials_exist(account)
+
+def generate_password():
+  '''
+  Function that generates a random password for a user 
+  '''
+  rando_password = Credentials.generate_random_password()
+  return rando_password
