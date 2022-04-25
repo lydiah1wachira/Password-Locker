@@ -105,7 +105,7 @@ class TestCredentials(unittest.TestCase):
     '''
     Test to check if all credentials in a list are being returned
     '''
-    self.assertEqual(Credentials.display_credentials(),Credentials.credential_list)
+    self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
 
   
 
