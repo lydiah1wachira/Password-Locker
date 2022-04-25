@@ -1,3 +1,5 @@
+import random
+import string
 class Credentials:
   '''
   Class credential that generates new instances of credentials
@@ -60,6 +62,23 @@ class Credentials:
     Method to display a list of all credentials.
     '''
     return cls.credentials_list
+
+
+  def generate_random_password(passLength = 9):
+    '''
+    Method to generate a random password string containing letters, number and special characters
+    '''
+    random_password = string.ascii_letters + string.digits + "!@#$%^&*"
+    random.shuffle(random_password)
+
+    password = []
+    for i in range():
+      password.append(random.choice(random_password))
+    random.shuffle(password)
+    return "".join(password)
+
+
+
 
 
 
