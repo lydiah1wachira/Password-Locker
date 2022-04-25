@@ -1,6 +1,7 @@
 from users import User
 import random
 import string
+
 class Credentials:
   '''
   Class credential that generates new instances of credentials

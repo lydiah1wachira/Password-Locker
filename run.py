@@ -66,3 +66,40 @@ def generate_password():
   '''
   rando_password = Credentials.generate_random_password()
   return rando_password
+
+def main():
+
+  print("Hello Welcome to Password Locker\n Please Enter the following short code:\n SU - create account\n SI - sign in \n")
+
+  short_code = input('Please Enter the following short code:\n SU - create account SI - sign in').lower().strip()
+
+  if short_code == 'su':
+    print('sign up')
+    print ('-'*20)
+    username = input('Enter new username\n')
+
+    while True:
+      password_option = input("Choose from the following codes:\n TP- create your own password\n RP - Get a random system generated password").lower().strip()
+
+      if password_option == 'tp':
+        password = input('Enter new Password...\n')
+        break 
+      elif password_option == 'rp':
+        password = generate_password()
+        break
+      else:
+        print("Invalid password please try again")
+    save_user(create_new_user(username,password))
+
+    print('-'*40)
+    print(f'Hello {username}, your Password Locker account has been successfully created and your password is {password}')
+
+  elif short_code == 'si':
+    print('Sign in. Enter your username and password')
+    username = input(' Enter Username...\n')
+    password = input('Enter Password...\n')
+
+    signIn =  login_user(username,password)
+    
+
+
