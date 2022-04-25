@@ -24,4 +24,20 @@ class Credentials:
     '''
     Credentials.credentials_list.remove(self)
 
+  @classmethod
+  def find_credentials_by_account_name(cls, account):
+    '''
+    Method that takes in an account_name and returns credentials that match that account name 
+
+    Args:
+        account_name: the account name to search for eg twitter.
+    
+    Returns:
+          Login credentials associated with that account.
+    '''
+    for credential in cls.credentials_list():
+      if credential.account_name == account:
+        return credential
+
+
 
