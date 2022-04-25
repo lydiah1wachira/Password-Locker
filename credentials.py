@@ -1,3 +1,4 @@
+from users import User
 import random
 import string
 class Credentials:
@@ -5,6 +6,17 @@ class Credentials:
   Class credential that generates new instances of credentials
   '''
   credentials_list = []
+
+  @classmethod
+  def verify_user(cls,username,password):
+    '''
+    method to verify whether user is in the user_list
+    '''
+    current_user = ""
+    for user in User.user_list:
+      if(user.username == username and user.password == password):
+        current_user == user.username
+    return current_user
 
   def __init__(self, account_name,username,password):
     '''
