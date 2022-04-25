@@ -63,7 +63,7 @@ class TestCredentials(unittest.TestCase):
     Test to check if we can save mutliple credentials objects to our credentials_list
     '''
     self.new_credential.save_credentials()
-    test_credentials = Credentials('Twitter','Voldemort','crUcio90')
+    test_credentials = Credentials('Instagram','Voldemort','crUcio90')
     test_credentials.save_credentials()
     self.assertEqual(len(Credentials.credentials_list),2)
 
@@ -72,11 +72,24 @@ class TestCredentials(unittest.TestCase):
     test to see if we can remove account credentials from our credentials_list
     '''
     self.new_credential.save_credentials()
-    test_credentials = Credentials('Twitter','Voldemort','crUcio90')
+    test_credentials = Credentials('Instagram','Voldemort','crUcio90')
     test_credentials.save_credentials()
 
     self.new_credential.delete_credentials()
     self.assertEqual(len(Credentials.credentials_list),1)
+
+  def test_find_credentials_by_account_name(self):
+    '''
+    Test to check if we can find login credentials by account name and display information.
+    '''
+    self.new_credential.save_credentials()
+    test_credentials = Credentials('Instagram','Voldemort','crUcio90')
+    test_credentials.save_credentials()
+
+    found_credentials = Credentials.find_credentials('Instagram')
+    self.assertEqual(found_credentials.account_name, test_credentials.account_name)
+
+
     
 
 if __name__ == '__main__':
