@@ -100,6 +100,12 @@ def main():
     password = input('Enter Password...\n')
 
     signIn =  login_user(username,password)
+
+    if login_user == signIn:
+      print(f'Welcome to Password Locker, {username}\n')
+
+  while True:
     
+
 
 
