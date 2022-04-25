@@ -86,7 +86,7 @@ class TestCredentials(unittest.TestCase):
     test_credentials = Credentials('Instagram','Voldemort','crUcio90')
     test_credentials.save_credentials()
 
-    found_credentials = Credentials.find_credentials('Instagram')
+    found_credentials = Credentials.find_credentials_by_account_name('Instagram')
     self.assertEqual(found_credentials.account_name, test_credentials.account_name)
 
 

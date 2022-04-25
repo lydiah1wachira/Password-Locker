@@ -35,9 +35,12 @@ class Credentials:
     Returns:
           Login credentials associated with that account.
     '''
-    for credential in cls.credentials_list():
+    for credential in cls.credentials_list:
       if credential.account_name == account:
         return credential
+
+
+
 
 
 
