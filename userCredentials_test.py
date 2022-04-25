@@ -36,6 +36,12 @@ class TestCredentials(unittest.TestCase):
     Method that runs before each individual credentials test method
     '''
     self.new_credential = Credentials('Hogwarts','Harry Potter','TheBoywholived')
+
+  def tearDown(self):
+    '''
+    tearDown method that does clean up after each test case has run.
+    '''
+    Credentials.credentials_list = []
   
   def test_init(self):
     '''
@@ -49,7 +55,17 @@ class TestCredentials(unittest.TestCase):
     '''
     test case to check if a credential object is saved into the credential_list
     '''
+    self.new_credential.save_credentials()
     self.assertEqual(len(Credentials.credentials_list),1)
+
+  def test_save_multiple_credentials(self):
+    '''
+    Test to check if we can save mutliple credentials objects to our credentials_list
+    '''
+    self.new_credential.save_credentials()
+    test_credentials = Credentials('Twitter','Voldemort','crUcio90')
+    test_credentials.save_credentials()
+    self.assertEqual(len(Credentials.credentials_list),2)
 
 if __name__ == '__main__':
     unittest.main()
