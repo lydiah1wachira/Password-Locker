@@ -101,6 +101,12 @@ class TestCredentials(unittest.TestCase):
 
     self.assertTrue(credentials_exist)
 
+  def test_display_all_credentials(self):
+    '''
+    Test to check if all credentials in a list are being returned
+    '''
+    self.assertEqual(Credentials.display_credentials(),Credentials.credential_list)
+
   
 
 
