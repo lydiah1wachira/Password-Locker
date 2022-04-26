@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.8
 
+from textwrap import shorten
 from users import User
 from credentials import Credentials
 
@@ -105,6 +106,59 @@ def main():
       print(f'Welcome to Password Locker, {username}\n')
 
   while True:
+    short_code = input('Use the following short codes :\n CC - create new  account credentials \n  FC - Find existing credentials\n DC - Display all accounts and their credentials\n D - Delete credentials').lower().strip()
+
+    if short_code == 'cc':
+      print('Generate New Account Credentials')
+      account = input('Account Name ...\n')
+      userName = input('Enter Username ...\n')
+
+      while True:
+         password_option = input("TP- create your own password\n RP - Get a random system generated password").lower().strip()
+         if password_option == 'tp':
+           password = input('Enter a new password')
+           break
+         elif password_option == 'rp':
+           password = generate_password()
+           break
+         else :
+           print('Invalid credentials, please try again')
+      save_details(create_new_credential(account, userName, password))
+      print(f'Account credentials for your {account} account, username- {userName}, password - {password},  have been created succesfully\n')
+    
+    elif short_code == 'fc':
+      search_account = input("Enter the account name you want to search for\n")
+      if find_credentials(search_account):
+        search_account = find_credentials(search_account)
+        print(f'Account: {search_account.account}')
+        print(f'Username - {search_account.username}\n password - {search_account.password}')
+        print('-'*30)
+      else:
+        print('No credentials were found for that account\n')
+
+    elif short_code == 'dc':
+      if display_accounts():
+        print("Here is a list of all your accounts and their credentials")
+        print('-'*30)
+        for account in display_accounts():
+          print(f'Account: {account.account}\n Username {username}\n password{password}')
+          print('_'*30)
+      else:
+        print("You do not yet have any saved Credentials.")
+
+    elif short_code == 'd':
+      search_name = input('Enter the account you want to delete')
+      if find_credentials(search_name):
+        delete_account = find_credentials(search_name)
+        delete_account.del_credentials()
+        print(f'Credentials for {delete_account.account} have been successfully deleted\n')
+      else:
+        print('No such credentials found')
+  
+if __name__ == '__main__':
+  main()
+
+
     
 
 
