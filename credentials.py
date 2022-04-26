@@ -82,12 +82,10 @@ class Credentials:
     Method to generate a random password string containing letters, number and special characters
     '''
     random_password = string.ascii_letters + string.digits + "!@#$%^&*"
-    random.shuffle(random_password)
-
-    new_password = " "
-    for i in range(passLength):
-      new_password.append(random.choice(random_password))
-    return "".join(new_password)
+    return "".join(random.choice(random_password) for i in range(passLength))
+    
+  
+    
 
 
 

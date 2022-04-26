@@ -1,6 +1,5 @@
 #!/usr/bin/env python3.8
-
-from textwrap import shorten
+4
 from users import User
 from credentials import Credentials
 
