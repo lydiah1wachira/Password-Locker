@@ -70,9 +70,9 @@ def generate_password():
 
 def main():
 
-  print("Hello Welcome to Password Locker\n Please Enter the following short code:\n SU - create account\n SI - sign in \n")
+  print("Hello Welcome to Password Locker\n")
 
-  short_code = input('Please Enter the following short code:\n SU - create account SI - sign in').lower().strip()
+  short_code = input('Please Enter the following short code:\n SU - create account\n SI - sign in\n').lower().strip()
 
   if short_code == 'su':
     print('sign up')
@@ -80,7 +80,7 @@ def main():
     username = input('Enter new username\n')
 
     while True:
-      password_option = input("Choose from the following codes:\n TP- create your own password\n RP - Get a random system generated password").lower().strip()
+      password_option = input("Choose from the following codes:\n TP- create your own password\n RP - Get a random system generated password\n").lower().strip()
 
       if password_option == 'tp':
         password = input('Enter new Password...\n')
@@ -94,6 +94,7 @@ def main():
 
     print('-'*40)
     print(f'Hello {username}, your Password Locker account has been successfully created and your password is {password}')
+    print('-'*40)
 
   elif short_code == 'si':
     print('Sign in. Enter your username and password')
@@ -104,9 +105,10 @@ def main():
 
     if login_user == signIn:
       print(f'Welcome to Password Locker, {username}\n')
+      print('*' * 40)
 
   while True:
-    short_code = input('Use the following short codes :\n CC - create new  account credentials \n  FC - Find existing credentials\n DC - Display all accounts and their credentials\n D - Delete credentials').lower().strip()
+    short_code = input('Use the following short codes :\n CC - create new  account credentials \n  FC - Find existing credentials\n DC - Display all accounts and their credentials\n D - Delete credentials\n').lower().strip()
 
     if short_code == 'cc':
       print('Generate New Account Credentials')
@@ -114,15 +116,17 @@ def main():
       userName = input('Enter Username ...\n')
 
       while True:
-         password_option = input("TP- create your own password\n RP - Get a random system generated password").lower().strip()
+         password_option = input("TP- create your own password\n RP - Get a random system generated password\n").lower().strip()
+         print('_'*40)
          if password_option == 'tp':
-           password = input('Enter a new password')
+           password = input('Enter a new password\n')
            break
          elif password_option == 'rp':
            password = generate_password()
            break
          else :
-           print('Invalid credentials, please try again')
+           print('Invalid credentials, please try again\n')
+           print('_'*40)
       save_details(create_new_credential(account, userName, password))
       print(f'Account credentials for your {account} account, username- {userName}, password - {password},  have been created succesfully\n')
     
@@ -135,25 +139,29 @@ def main():
         print('-'*30)
       else:
         print('No credentials were found for that account\n')
+        print('-'*40)
 
     elif short_code == 'dc':
       if display_accounts():
-        print("Here is a list of all your accounts and their credentials")
+        print("Here is a list of all your accounts and their credentials\n")
         print('-'*30)
         for account in display_accounts():
           print(f'Account: {account.account}\n Username {username}\n password{password}')
           print('_'*30)
       else:
-        print("You do not yet have any saved Credentials.")
+        print("You do not yet have any saved Credentials.\n")
 
     elif short_code == 'd':
-      search_name = input('Enter the account you want to delete')
+      search_name = input('Enter the account you want to delete\n')
       if find_credentials(search_name):
         delete_account = find_credentials(search_name)
         delete_account.del_credentials()
         print(f'Credentials for {delete_account.account} have been successfully deleted\n')
+        print('_'*40)
       else:
-        print('No such credentials found')
+        print('No such credentials found\n')
+        print('-'*40)
+        
   
 if __name__ == '__main__':
   main()
